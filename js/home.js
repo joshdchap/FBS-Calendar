@@ -13,14 +13,19 @@ function isMatch(el) {
 }
 
 function findEventDeets(date, hour) {
+  var thisMatch = findEvent(date, hour);
+  if (thisMatch === undefined) {
+    return "";
+  } else {
+    return thisMatch.comment;
+  }
+}
+
+function findEvent(date, hour) {
   thisHour = hour;
   thisDate = date;
   var match = all_items.filter(isMatch);
-  if (match.length < 1) {
-    return "";
-  } else {
-    return match[0].comment;
-  }
+  return match[0];
 }
 
 var $emptyTimeslot = $('<div class="event"></div>');
@@ -87,8 +92,12 @@ $(document).ready(function() {
       var $edet = $ev.find('.eventDetails');
       var newEvent = $edet.find('.eventInput').val();
       $edet.html(newEvent);
-      var saveEvent = new EventItem($ev.data("date"), $ev.data("hour"), newEvent);
-      all_items.push(saveEvent);
+      var saveEvent = findEvent($ev.data("date"), $ev.data("hour"))
+      if (saveEvent === undefined) {
+        all_items.push(new EventItem($ev.data("date"), $ev.data("hour"), newEvent));
+      } else {
+	saveEvent.comment = newEvent;
+      }
       $(this).removeClass("saveEvent").addClass("editEvent").text("edit");
     }
   )
