@@ -3,8 +3,49 @@
   width: 70%;
 }
 #right {
-  width: 25%;
+  width: 28%;
   float: right;
   height: 100%;
   overflow: auto;
+}
+#sidebar {
+  padding: 5px;
+  border: 1px solid #EFE;
+  background: #EFE;
+  border-radius: 5px;
+}
+.sidebarHeader {
+  text-align: center;
+}
+.event {
+  padding: 10px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  margin: 3px;
+  background: #FDFDFD;
+}
+.eventTime,
+.eventDetails {
+  padding: 5px;
+}
+.eventDetails {
+  margin-top: 3px;
+}
+.editEvent,
+.saveEvent {
+  float: right;
+  border: 1px solid #666;
+  padding: 1px 5px;
+  background: #EEE;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+}
+.editEvent:hover,
+.saveEvent:hover {
+  background: #DDD;
+}
+.eventInput {
+  width: 100%;
+  height: 50px;
 }
